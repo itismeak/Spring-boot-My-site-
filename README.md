@@ -1,7 +1,8 @@
 # Spring-boot-My-site-
 
 **File Handling**
-
+<html xmlns:th="http://www.thymeleaf.org"> - Adding thymleaf properties to HTML
+	
 1)HTML
 
     Tips:
@@ -15,10 +16,13 @@
 2)controller
 
     Tips:
-     @RequestParam("files") MultipartFile file
-       files -  html/entity present name
+     	@RequestParam("files") MultipartFile file
+        files -  html/entity present name
         file  - entity reference of MultipartFile class
         transferTo(path) - Move the file source to destination 
+	
+	model.addAttribute(key,msg) - return a msg to HTML page
+	th:text="${msg}" - Receive the controller msg and display HTML Page
         
     @RequestMapping("/upload")
 	public String upload(Model model, @RequestParam("files") MultipartFile file) throws IOException {
@@ -43,3 +47,9 @@
 		return "uploadstatusview";
 
 	}
+	
+3)HTML Response of file upload
+
+	<div th:if="${msg}">
+		<span th:text="${msg}"></span>
+	</div>
