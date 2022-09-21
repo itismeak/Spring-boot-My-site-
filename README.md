@@ -24,6 +24,11 @@
 	model.addAttribute(key,msg) - return a msg to HTML page
 	th:text="${msg}" - Receive the controller msg and display HTML Page
         
+	IMPORTANT - Multiple type input fileds used in must use BindingResult result
+	**BindingResult result -	public String registerUser(@ModelAttribute("user")User user, BindingResult result, @RequestParam("file") MultipartFile file){
+	...
+	}**
+
     @RequestMapping("/upload")
 	public String upload(Model model, @RequestParam("files") MultipartFile file) throws IOException {
 		String destPath = "D:/file handling/uploads/";
