@@ -58,3 +58,21 @@
 	<div th:if="${msg}">
 		<span th:text="${msg}"></span>
 	</div>
+	
+4)Security Config(page controller)
+
+protected void configure(HttpSecurity http) throws Exception {
+		http.
+		authorizeRequests().antMatchers("/register**", "/view/**", "/css/**", "/images/**", "/webjars/**").permitAll().
+		anyRequest().authenticated().
+		and()
+		.formLogin()
+		.loginPage("/login").permitAll();      
+	}
+	
+	Hints:
+		antMatchers("/register","/view") - allow the register,view web pages during spring security dependency
+		permitAll() - permit the pages
+		
+		formLogin() - After this method add the login from logic methods
+		.loginPage("/login").permitAll()`- "/login" url of the allow page 
